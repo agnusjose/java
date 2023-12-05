@@ -1,33 +1,86 @@
 import java.util.LinkedList;
-
-public class DoublyLinked {
-public static void main(String [] args) {
-	DoublyLinkedList<Integer>doubly=new DoublyLinkedList();
-	doubly.add(2);
-	doubly.add(4);
-	doubly.add(6);
-	System.out.println("List is:");
-	doubly.display();
-	doubly.insert(3,5);
-	System.out.println("doubly linked list after insretion is:");
-	doubly.display();
-}
-}
-class DoublyLinkedList <T>{
-	private LinkedList <T> list=new LinkedList();
-	public void add(T element) {
+import java.util.Scanner;
+class DoublyLInkedList<T>{
+	private LinkedList<T>list = new LinkedList<>();
+	public void insertionAtEnd(T element) {
 		list.addLast(element);
 	}
-	public void insert(int index,T element) {
+	public void insertionAtFront (T element) {
+		list.addFirst(element);
+	}
+	public void insertionAtAnyPosition (int index, T element) {
 		list.add(index,element);
 	}
-	public void remove(int index) {
+	public void removeAtAnyPosition(int index) {
 		list.remove(index);
 	}
 	public void display() {
-		for(T element:list) {
-			System.out.println(element+" ");
+		for(T element : list) {
+			System.out.println(element +" ");
 		}
-		System.out.println();
+		System.out.println( );
 	}
+}
+
+
+public class DoublyLinked {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		DoublyLInkedList<Integer>doublyLInkedList = new DoublyLInkedList<>();
+		boolean condition = true;
+		while(condition) {
+			System.out.println("Enter your choice\n"
+			+"1.Insertion At Front\n"
+			+ "2.Insertion At End\n"
+			+"3.Insertion At any position\n"
+			+"4.Deletion at any Position\n"
+			+"5. Display\n"
+			+"Exit\n");
+		int choice = sc.nextInt();
+		int element,position;
+		switch(choice) {
+		case 1:
+			System.out.println("Enter the element:");
+			 element = sc.nextInt();
+			doublyLInkedList.insertionAtFront(element);
+			break;
+		
+		case 2:
+			System.out.println("Enter the element:");
+			 element = sc.nextInt();
+			doublyLInkedList.insertionAtEnd(element);
+			break;	
+		
+		case 3:
+			System.out.println("Enter the element:");
+			 element = sc.nextInt();
+			System.out.println("Enter the position:");
+			 position = sc.nextInt();
+			doublyLInkedList.insertionAtAnyPosition(position,element);
+			break;
+		case 4:
+			
+			System.out.println("Enter the position:");
+			 position = sc.nextInt();
+			doublyLInkedList.removeAtAnyPosition(position);
+			break;
+			
+		case 5:
+			System.out.println("The elements are :");
+			doublyLInkedList.display();
+			break;
+		
+		case 6:
+			condition = false;
+			break;
+		default :
+			System.out.println("Invalid choice");
+			
+			 
+			
+		}
+		}
+	}
+
 }
